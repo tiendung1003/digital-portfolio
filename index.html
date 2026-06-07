@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio | Phạm Tiến Dũng</title>
+    <style>
+        /* CSS Reset & Biến màu sắc */
+        :root {
+            --bg-main: #F4EFE6; /* Màu nền be sáng */
+            --bg-dark: #4A6B8A; /* Màu xanh dương trầm */
+            --text-main: #333333;
+            --text-light: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Thanh điều hướng */
+        header {
+            background-color: var(--bg-dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+        }
+
+        /* Thẻ Giới thiệu bản thân */
+        .intro-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .intro-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 250px;
+        }
+
+        .intro-profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #E8E8E8;
+            margin-bottom: 15px;
+        }
+
+        .intro-profile h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .intro-profile p {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .intro-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .intro-content p {
+            margin-bottom: 15px;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Lưới Bài tập (Dự án) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tag {
+            background-color: #E2E8F0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .project-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: #666;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #8C9BAB;
+            color: var(--text-light);
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--bg-dark);
+        }
+
+        /* Phần Tổng kết */
+        .summary-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 60px 20px;
+        }
+
+        .summary-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .summary-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .summary-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        /* Chân trang */
+        footer {
+            background-color: #E5DFD3;
+            padding: 20px;
+            text-align: center;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .intro-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#du-an">Dự án</a>
+        <a href="#tong-ket">Tổng kết</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1 class="section-title" id="gioi-thieu">Giới thiệu</h1>
+    <div class="intro-card">
+        <div class="intro-profile">
+            <img src="anhchandung.jpg" alt="Chân dung Phạm Tiến Dũng">
+            <h2>Phạm Tiến Dũng</h2>
+            <p>K70 VNU-UET</p>
+        </div>
+        <div class="intro-content">
+            <h3>Về Bản Thân</h3>
+            <p>Mình là Phạm Tiến Dũng, hiện là sinh viên khóa K70 tại Trường Đại học Công nghệ - ĐHQGHN (VNU-UET). Là một người học trong kỷ nguyên số, mình luôn đam mê khám phá sự giao thoa giữa công nghệ lập trình và tư duy logic thuật toán.</p>
+            <p><strong>Mục tiêu của Portfolio:</strong> Portfolio kỹ thuật số này là một phần của môn học "Nhập môn Công nghệ số và Ứng dụng AI". Nó không chỉ là nơi lưu trữ và minh chứng cho các bài tập thực hành, mà còn giúp mình hệ thống hóa kỹ năng quản lý dữ liệu, làm việc nhóm trực tuyến và nhìn lại quá trình trưởng thành của bản thân trong việc sử dụng AI một cách có trách nhiệm.</p>
+        </div>
+    </div>
+
+    <div class="projects-grid" id="du-an">
+
+        <div class="project-card">
+            <div><span class="tag">Mục 1.4</span></div>
+            <h4>Bài 1: Thao tác tệp tin và thư mục</h4>
+            <p>Trình bày cấu trúc thư mục tối ưu cho việc học tập và quản lý mã nguồn, kèm quy tắc đặt tên tệp chuẩn mực.</p>
+            <a href="bai01.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+        <div class="project-card">
+            <div><span class="tag">Mục 2.4</span></div>
+            <h4>Bài 2: Tìm kiếm và đánh giá thông tin</h4>
+            <p>Sử dụng các toán tử tìm kiếm nâng cao để tra cứu tài liệu học thuật và lập bảng đánh giá độ tin cậy của nguồn tin.</p>
+            <a href="bai02.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+        <div class="project-card">
+            <div><span class="tag">Mục 3.4</span></div>
+            <h4>Bài 3: Viết Prompt hiệu quả</h4>
+            <p>So sánh kết quả của Prompt cơ bản và Prompt cải tiến ứng dụng kỹ thuật Prompt Engineering trong học tập.</p>
+            <a href="bai03.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+        <div class="project-card">
+            <div><span class="tag">Mục 4.4</span></div>
+            <h4>Bài 4: Hợp tác trực tuyến</h4>
+            <p>Minh chứng sử dụng công cụ quản lý dự án nhóm trực tuyến, phân công công việc và phối hợp teamwork hiệu quả.</p>
+            <a href="bai04.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+        <div class="project-card">
+            <div><span class="tag">Mục 5.4</span></div>
+            <h4>Bài 5: AI tạo sinh hỗ trợ sáng tạo</h4>
+            <p>Trưng bày các sản phẩm nội dung số (hình ảnh, tài liệu) được hoàn thiện với sự hỗ trợ của các công cụ AI.</p>
+            <a href="bai05.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+        <div class="project-card">
+            <div><span class="tag">Mục 6.4</span></div>
+            <h4>Bài 6: AI có trách nhiệm</h4>
+            <p>Bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm, đảm bảo liêm chính học thuật và bảo vệ dữ liệu.</p>
+            <a href="bai06.pdf" class="btn">Xem chi tiết & Minh chứng</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="summary-section" id="tong-ket">
+    <div class="summary-container">
+        <h2 class="summary-title">Tổng Kết</h2>
+        <div class="summary-text">
+            <p>Quá trình xây dựng Digital Portfolio này là một trải nghiệm quý báu giúp mình hệ thống lại toàn bộ kiến thức kỹ năng số.</p>
+            <p><strong>Kiến thức quan trọng nhất:</strong> Cách thức tổ chức thông tin logic, làm việc nhóm hiệu quả trên môi trường mạng và hiểu rõ ranh giới đạo đức khi ứng dụng Trí tuệ nhân tạo.</p>
+            <p><strong>Thách thức:</strong> Việc kết nối các công cụ số lại với nhau để tạo ra một luồng làm việc (workflow) trơn tru đòi hỏi sự tỉ mỉ và tư duy hệ thống cao. Tuy nhiên, kết quả đạt được hoàn toàn xứng đáng với công sức bỏ ra.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    Phạm Tiến Dũng | K70 VNU-UET | Dự án Nhập môn Công nghệ số
+</footer>
+
+</body>
+</html>
